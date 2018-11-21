@@ -122,7 +122,7 @@ button {
   <img class="modal-content" id="img01">
   <div id="caption"></div>
 </div>
-  <button id="mapnl" onclick="removeLines()" class="btn" style="float:right">Simplify</button>
+  <button id="mapnl" onclick="removeLines()" class="btn" style="float:right">Remove Lines & Names</button>
    
    <p id="placeholder">
   
@@ -134,7 +134,14 @@ button {
     <script>
        function removeLines() {
           
-      document["img"].src="/imgnl.png";
+     if (document.getElementById("map").src == "map.png") 
+        {
+            document.getElementById("map").src = "mapnl.png";
+        }
+        else 
+        {
+            document.getElementById("map").src = "map.png";
+        }
     }
        var modal = document.getElementById('myModal');
        var img = document.getElementById('map');
