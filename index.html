@@ -6,9 +6,15 @@
     cursor: pointer;
     transition: 0.3s;
 }
+#mapnl {
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
        
        #map:hover {opacity: 0.7;}
 
+	   #mapnl:hover {opacity: 0.7;}
        /* The Modal (background) */
 .modal {
     display: none; /* Hidden by default */
@@ -99,6 +105,26 @@ button {
   width: 200px;
   cursor: pointer;
 }
+#toggleon {
+  background-color: rgb(255, 255, 255);
+  border-radius: 6px;
+  border: none;
+  color: rgb(0, 0, 0);
+  padding: 10px;
+  text-transform: uppercase;
+  width: 200px;
+  cursor: pointer;
+}
+#toggleoff {
+  background-color: rgb(255, 255, 255);
+  border-radius: 6px;
+  border: none;
+  color: rgb(0, 0, 0);
+  padding: 10px;
+  text-transform: uppercase;
+  width: 200px;
+  cursor: pointer;
+}
 #placeholder {
   height: 100px;
   width: 100px;
@@ -121,8 +147,12 @@ button {
   <span class="close">×</span>
   <img class="modal-content" id="img01">
   <div id="caption"></div>
+  
 </div>
-  <button id="mapnl" onclick="removeLines()" class="btn" style="float:right">Toggle Lines & Names</button>
+<br/>
+  <button id="toggleon" onclick="document.getElementById('map').src='map.png'" class="btn" >Turn Details On</button>
+  
+  <button id="toggleoff" onclick="document.getElementById('map').src='mapnl.png'" class="btn" >Turn Details Off</button>
    
    <p id="placeholder">
   
@@ -132,17 +162,7 @@ button {
   <script src="ui.js"></script>
 </body>
     <script>
-       function removeLines() {
-          
-     if (document.getElementById("map").src == "map.png") 
-        {
-            document.getElementById("map").src = "mapnl.png";
-        }
-        else 
-        {
-            document.getElementById("map").src = "map.png";
-        }
-    }
+ 
        var modal = document.getElementById('myModal');
        var img = document.getElementById('map');
 var modalImg = document.getElementById("img01");
