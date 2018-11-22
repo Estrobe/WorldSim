@@ -6,6 +6,49 @@
     cursor: pointer;
     transition: 0.3s;
 }
+.form-popup {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  right: 15px;
+  border: 3px solid #f1f1f1;
+  z-index: 9;
+}
+.form-container {
+  max-width: 300px;
+  padding: 10px;
+  background-color: white;
+}
+.form-container input[type=text], .form-container input[type=text] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+.form-container input[type=text]:focus, .form-container input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+.form-container .btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+
+/* Add a red background color to the cancel button */
+.form-container .cancel {
+  background-color: red;
+}
+/* Add some hover effects to buttons */
+.form-container .btn:hover, .contact:hover {
+  opacity: 1;
+}
 #mapnl {
     border-radius: 5px;
     cursor: pointer;
@@ -38,7 +81,12 @@
     max-width: 1000px;
 	
 }
-       
+#titletxt {
+	    text-align: center;
+    text-transform: uppercase;
+    color: #00008B;
+	letter-spacing: 3px;
+}     
        /* Caption of Modal Image */
 #caption {
     margin: auto;
@@ -106,6 +154,16 @@ button {
   width: 200px;
   cursor: pointer;
 }
+#contact {
+ background-color: #47BB17;
+  border-radius: 6px;
+  border: none;
+  color: rgb(255, 255, 255);
+  padding: 10px;
+  text-transform: uppercase;
+  width: 200px;
+  cursor: pointer;
+  }
 #toggleon {
   background-color: rgb(255, 255, 255);
   border-radius: 6px;
@@ -141,20 +199,36 @@ button {
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<h4>Welcome to WorldSim Beta 0.1</h4>
+<h4 id="titletxt">Welcome to WorldSim Beta 0.3.1</h4>
 <img id="map" src="map.png" alt="Map of the World" height="450" width="750">
   
   <div id="myModal" class="modal">
   <span class="close">×</span>
   <img class="modal-content" id="img01">
   <div id="caption"></div>
-  
+
 </div>
 <br/>
   <button id="toggleon" onclick="document.getElementById('map').src='map.png'" class="btn" >Turn Details On</button>
   
   <button id="toggleoff" onclick="document.getElementById('map').src='mapnl.png'" class="btn" >Turn Details Off</button>
-   
+  <button id="contact" onclick="openForm()">Contact</button>
+  
+   <div class="form-popup" id="myForm">
+  <form action="https://script.google.com/macros/s/AKfycbwKmUSc-l85Z_qbHDhYMfT-tdSJuuQ_4LM3ybyAfiJm1LPHIqBh/exec" method="POST" class="form-container">
+    <h1>Contact</h1>
+
+    <label for="email"><b>Email</b></label>
+    <input type="text" placeholder="Enter Email" name="email" required>
+
+    <label for="msg"><b>Message</b></label>
+    <input type="text" placeholder="Enter Message" name="msg" required>
+
+    <button type="submit" class="btn">Send</button>
+    <button type="button" class="btn cancel" onclick="closeForm()">Cancel</button>
+  </form>
+</div>
+
    <p id="placeholder">
   
   </p>
@@ -164,7 +238,13 @@ button {
 
 </body>
     <script>
- 
+ function openForm() {
+    document.getElementById("myForm").style.display = "block";
+}
+
+function closeForm() {
+    document.getElementById("myForm").style.display = "none";
+}
        var modal = document.getElementById('myModal');
        var img = document.getElementById('map');
 var modalImg = document.getElementById("img01");
@@ -195,7 +275,9 @@ function printNumber(number) {
   var placeholder = document.getElementById('placeholder');
   placeholder.innerHTML = number;
 }
-
+function contact() {
+	
+}
 var button = document.getElementById('button');
 
 button.onclick = function() {
