@@ -86,7 +86,87 @@
     text-transform: uppercase;
     color: #00008B;
 	letter-spacing: 3px;
-}     
+}  
+#focusTitle {
+position:absolute; top:0; right:0;
+text-align: center;
+    text-transform: uppercase;
+
+	letter-spacing: 1px;
+
+
+  color: rgb(0, 0, 0);
+
+
+  width: 200px;
+  cursor: pointer;
+}   
+#goldmarkFocus {
+position:absolute; top:20; right:0;
+  color: rgb(135, 96, 188);
+	letter-spacing: 1px;
+	  width: 200px;
+}
+#cragstoniaFocus {
+position:absolute; top:40; right:0;
+  color: rgb(221, 93, 206);
+	letter-spacing: 1px;
+	  width: 200px;
+}
+#mautralFocus {
+position:absolute; top:60; right:0;
+  color: rgb(97, 92, 164);
+	letter-spacing: 1px;
+	  width: 200px;
+}
+#auschwitz2Focus {
+position:absolute; top:80; right:0;
+  color: rgb(234, 122, 49);
+	letter-spacing: 1px;
+	  width: 200px;
+}
+#rssuFocus {
+position:absolute; top:100; right:0;
+  color: rgb(226, 73, 49);
+	letter-spacing: 1px;
+	  width: 200px;
+}
+#ethiopoliFocus {
+position:absolute; top:120; right:0;
+  color: rgb(61, 235, 23);
+	letter-spacing: 1px;
+	  width: 200px;
+}
+#usmFocus {
+position:absolute; top:140; right:0;
+  color: rgb(68, 176, 86);
+	letter-spacing: 1px;
+	  width: 200px;
+}
+#sriLanka2Focus {
+position:absolute; top:160; right:0;
+  color: rgb(56, 97, 186);
+	letter-spacing: 1px;
+	  width: 200px;
+}
+#rylandiaFocus {
+position:absolute; top:180; right:0;
+  color: rgb(255, 163, 0);
+	letter-spacing: 1px;
+	  width: 200px;
+}
+#conradFocus {
+position:absolute; top:200; right:0;
+  color: rgb(227, 153, 187);
+	letter-spacing: 1px;
+	  width: 200px;
+}
+#rssuRFocus {
+position:absolute; top:220; right:0;
+  color: rgb(200, 200, 0);
+	letter-spacing: 1px;
+	  width: 200px;
+}
        /* Caption of Modal Image */
 #caption {
     margin: auto;
@@ -184,6 +264,9 @@ button {
   width: 200px;
   cursor: pointer;
 }
+#btndone {
+
+}
 #placeholder {
   height: 100px;
   width: 100px;
@@ -193,22 +276,70 @@ button {
   border-radius: 10px;  
   font-size:80px;
 }
+#popup {
+    width:200px;
+    height:100px;
+    padding:20px;
+    background-color:#d3d3d3;    
+    position:absolute;
+    top:100px;
+    left:100px;
+    display:none;
+}
     </style>
 <head>
+
     <title>WorldSim Beta</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
 <h4 id="titletxt">Welcome to WorldSim Beta 0.3.1</h4>
 <img id="map" src="map.png" alt="Map of the World" height="450" width="750">
-  
+  <h4 id="focusTitle" style="float:right">Country Research</h4>
+  <br>
+  <h5 id="goldmarkFocus" style="float:right">Goldmark: 
+	<script type="text/javascript">
+	var goldmarkFocusVar = "Army"
+	document.write(goldmarkFocusVar)
+	</script>
+  </h5>
+  <h5 id="cragstoniaFocus" style="float:right">Cragstonia: Army </h5>
+  <h5 id="mautralFocus" style="float:right">Mautral: Army </h5>
+  <h5 id="auschwitz2Focus" style="float:right">Auschwitz 2: Army </h5>
+    <h5 id="rssuFocus" style="float:right">RSSU: Army </h5>
+  <h5 id="ethiopoliFocus" style="float:right">Ethiopoli: Army </h5>
+  <h5 id="usmFocus" style="float:right">USM: Army </h5>
+  <h5 id="sriLanka2Focus" style="float:right">Sri Lanka 2: Army </h5>
+    <h5 id="rylandiaFocus" style="float:right">Rylandia: Army </h5>
+  <h5 id="conradFocus" style="float:right">Conrad: Army </h5>
+  <h5 id="rssuRFocus" style="float:right">RSSU Rebels: N/A </h5>
   <div id="myModal" class="modal">
   <span class="close">×</span>
   <img class="modal-content" id="img01">
   <div id="caption"></div>
 
+
+  
+  
+  
+  
 </div>
 <br/>
+<button id="focusstats" onclick="showPopup()" class="btn" >Focus Stats</button>
+  <div id="popup">
+    <div>Enter Password:</div>
+	
+    <input id="pass" type="password"/>
+	<br/> <br/>
+    <button id="btndone" onclick="done()">Done</button>    
+	<br/> 
+</div>
+
+
+
+
+
   <button id="toggleon" onclick="document.getElementById('map').src='map.png'" class="btn" >Turn Details On</button>
   
   <button id="toggleoff" onclick="document.getElementById('map').src='mapnl.png'" class="btn" >Turn Details Off</button>
@@ -238,6 +369,47 @@ button {
 
 </body>
     <script>
+	
+var goldmarkFocusVar = localStorage.getItem("goldmarkFocusKey");
+	
+	
+	function done() { 
+    document.getElementById("popup").style.display = "none";
+    var password = document.getElementById("pass").value;
+	
+    //DO STUFF WITH PASSWORD HERE
+	if(password == "AzfarDoesntEatHam")	 {
+		goldmarkSend()
+	}
+	else {
+	window.alert("Incorrect password")
+	}
+};
+function goldmarkSend() {
+	 var focusOn =  prompt("Focus on Army or Navy? (Type in lowercase)");
+	 if (focusOn == "navy") {
+			document.getElementById("goldmarkFocus").innerHTML = "Goldmark: Navy ";
+	
+	window.alert("Successfully updated")
+	 }
+	 else if (focusOn == "army") {
+		document.getElementById("goldmarkFocus").innerHTML = "Goldmark: Army ";
+	window.alert("Successfully updated")
+	localStorage.setItem("goldmarkFocusKey", goldmarkFocus);
+	 }
+	 else {
+		window.alert("Please pick army or navy [ERROR: Invalid Response]")
+	 }
+}
+
+function showPopup() {
+     document.getElementById("popup").style.display = "block";
+}
+	
+	
+	
+	
+	
  function openForm() {
     document.getElementById("myForm").style.display = "block";
 }
