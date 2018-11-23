@@ -300,7 +300,8 @@ button {
   <br>
   <h5 id="goldmarkFocus" style="float:right">Goldmark: 
 	<script type="text/javascript">
-	var goldmarkFocusVar = "Army"
+	var goldmarkFocusVar = "Army";
+	
 	document.write(goldmarkFocusVar)
 	</script>
   </h5>
@@ -369,8 +370,9 @@ button {
 
 </body>
     <script>
-	
-var goldmarkFocusVar = localStorage.getItem("goldmarkFocusKey");
+	localStorage.setItem("goldmarkFocusKey", goldmarkFocus);
+	var goldmarkFocusVar = localStorage.getItem("goldmarkFocusKey");
+
 	
 	
 	function done() { 
