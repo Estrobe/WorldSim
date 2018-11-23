@@ -305,7 +305,13 @@ button {
 	document.write(goldmarkFocusVar)
 	</script>
   </h5>
-  <h5 id="cragstoniaFocus" style="float:right">Cragstonia: Army </h5>
+  <h5 id="cragstoniaFocus" style="float:right">Cragstonia: 
+	<script type="text/javascript">
+	var cragstoniaFocusVar = localStorage.getItem("cragstoniaFocusKey");
+	
+	document.write(cragstoniaFocusVar)
+	</script>
+  </h5>
   <h5 id="mautralFocus" style="float:right">Mautral: Army </h5>
   <h5 id="auschwitz2Focus" style="float:right">Auschwitz 2: Army </h5>
     <h5 id="rssuFocus" style="float:right">RSSU: Army </h5>
@@ -372,7 +378,7 @@ button {
     <script>
 	
 	var goldmarkFocusVar = localStorage.getItem("goldmarkFocusKey");
-
+	var cragstoniaFocusVar = localStorage.getItem("cragstoniaFocusKey");
 	
 	
 	function done() { 
@@ -383,10 +389,15 @@ button {
 	if(password == "AzfarDoesntEatHam")	 {
 		goldmarkSend()
 	}
+	else if(password == "craggletooth") {
+		cragstoniaSend()
+	}
 	else {
 	window.alert("Incorrect password")
 	}
 };
+
+
 function goldmarkSend() {
 	 var focusOn =  prompt("Focus on Army or Navy? (Type in lowercase)");
 	 if (focusOn == "navy") {
@@ -395,7 +406,6 @@ function goldmarkSend() {
 	window.alert("Successfully updated")
 	 }
 	 else if (focusOn == "army") {
-		document.getElementById("goldmarkFocus").innerHTML = "Goldmark: Army ";
 	var goldmarkFocusVar = "Army"
 	localStorage.setItem("goldmarkFocusKey", goldmarkFocusVar);
 	window.alert("Successfully updated")
@@ -405,6 +415,24 @@ function goldmarkSend() {
 		window.alert("Please pick army or navy [ERROR: Invalid Response]")
 	 }
 }
+
+function cragstoniaSend() {
+	var focusOn = prompt("Focus on Army or Navy? (Type in lowercase)");
+	if (focusOn == "navy") {
+		var cragstoniaFocusVar = "Navy"
+		localStorage.setItem("cragstoniaFocusKey", cragstoniaFocusVar);
+		window.alert("Successfully updated")
+	}
+	else if (focusOn == "army") {
+	var cragstoniaFocusVar = "Army"
+		localStorage.setItem("cragstoniaFocusKey", cragstoniaFocusVar);
+		window.alert("Successfully updated")
+	}
+	else {
+		window.alert("Please pick army or navy [ERROR: Invalid Response]")
+	 }
+}
+
 
 function showPopup() {
      document.getElementById("popup").style.display = "block";
