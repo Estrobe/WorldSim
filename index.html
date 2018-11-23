@@ -300,8 +300,8 @@ button {
   <br>
   <h5 id="goldmarkFocus" style="float:right">Goldmark: 
 	<script type="text/javascript">
-	var goldmarkFocusVar = "Army";
-	
+	var goldmarkFocusVar = localStorage.getItem("goldmarkFocusKey");
+
 	document.write(goldmarkFocusVar)
 	</script>
   </h5>
@@ -370,7 +370,7 @@ button {
 
 </body>
     <script>
-	localStorage.setItem("goldmarkFocusKey", goldmarkFocus);
+	
 	var goldmarkFocusVar = localStorage.getItem("goldmarkFocusKey");
 
 	
@@ -390,14 +390,16 @@ button {
 function goldmarkSend() {
 	 var focusOn =  prompt("Focus on Army or Navy? (Type in lowercase)");
 	 if (focusOn == "navy") {
-			document.getElementById("goldmarkFocus").innerHTML = "Goldmark: Navy ";
-	
+	 var goldmarkFocusVar = "Navy"
+	localStorage.setItem("goldmarkFocusKey", goldmarkFocusVar);
 	window.alert("Successfully updated")
 	 }
 	 else if (focusOn == "army") {
 		document.getElementById("goldmarkFocus").innerHTML = "Goldmark: Army ";
+	var goldmarkFocusVar = "Army"
+	localStorage.setItem("goldmarkFocusKey", goldmarkFocusVar);
 	window.alert("Successfully updated")
-	localStorage.setItem("goldmarkFocusKey", goldmarkFocus);
+	
 	 }
 	 else {
 		window.alert("Please pick army or navy [ERROR: Invalid Response]")
