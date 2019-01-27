@@ -234,6 +234,27 @@ button {
   width: 200px;
   cursor: pointer;
 }
+#attackbtn {
+ background-color: #B22222;
+  border-radius: 6px;
+  border: none;
+  color: rgb(255, 255, 255);
+  padding: 10px;
+  text-transform: uppercase;
+  width: 200px;
+  cursor: pointer;
+  }
+  #stopAtkButton {
+ background-color: #B22222;
+  border-radius: 6px;
+  border: none;
+  color: rgb(255, 255, 255);
+  padding: 10px;
+  text-transform: uppercase;
+  width: 200px;
+  cursor: pointer;
+  visibility:hidden;
+  }
 #contact {
  background-color: #47BB17;
   border-radius: 6px;
@@ -244,6 +265,7 @@ button {
   width: 200px;
   cursor: pointer;
   }
+
 #toggleon {
   background-color: rgb(255, 255, 255);
   border-radius: 6px;
@@ -286,18 +308,23 @@ button {
     left:100px;
     display:none;
 }
+#dicebutton {
+  visibility:hidden;
+}
+
     </style>
 <head>
 
-    <title>WorldSim Beta</title>
+    <title>World Simulator (b0.3.2)</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<h4 id="titletxt">Welcome to WorldSim Beta 0.3.1</h4>
+<h4 id="titletxt">Welcome to The World Simulator Beta</h4>
 <img id="map" src="map.png" alt="Map of the World" height="450" width="750">
   <h4 id="focusTitle" style="float:right">Country Research</h4>
   <br>
+
   <h5 id="goldmarkFocus" style="float:right">Goldmark: 
 	<script type="text/javascript">
 	var goldmarkFocusVar = localStorage.getItem("goldmarkFocusKey");
@@ -309,7 +336,7 @@ button {
 	<script type="text/javascript">
 	var cragstoniaFocusVar = localStorage.getItem("cragstoniaFocusKey");
 	
-	document.write(cragstoniaFocusVar)
+	document.write("Army")
 	</script>
   </h5>
   <h5 id="mautralFocus" style="float:right">Mautral: Army </h5>
@@ -327,13 +354,16 @@ button {
   <div id="caption"></div>
 
 
-  
+
   
   
   
 </div>
 <br/>
-<button id="focusstats" onclick="showPopup()" class="btn" >Focus Stats</button>
+
+<script>
+
+/*<button id="focusstats" onclick="showPopup()" class="btn" >Focus Stats</button>
   <div id="popup">
     <div>Enter Password:</div>
 	
@@ -342,10 +372,10 @@ button {
     <button id="btndone" onclick="done()">Done</button>    
 	<br/> 
 </div>
+</script>
 
 
-
-
+  <button id="attackbtn" onclick="attackFunction()" class="btn" >Attack</button>
 
   <button id="toggleon" onclick="document.getElementById('map').src='map.png'" class="btn" >Turn Details On</button>
   
@@ -370,14 +400,26 @@ button {
    <p id="placeholder">
   
   </p>
-  <button id="button">Roll Dice</button>
+  <button id="dicebutton">Roll Dice</button>
+  <button id="stopAtkButton" onclick="stopAttack()">Stop Attack</button>
   <script src="dice.js"></script>
   <script src="ui.js"></script>
 
 </body>
+
+
+<script type="text/javascript">
+
+</script>
+
+
     <script>
 	
-	var goldmarkFocusVar = localStorage.getItem("goldmarkFocusKey");
+
+
+
+
+/*	var goldmarkFocusVar = localStorage.getItem("goldmarkFocusKey");
 	var cragstoniaFocusVar = localStorage.getItem("cragstoniaFocusKey");
 	
 	
@@ -433,13 +475,24 @@ function cragstoniaSend() {
 	 }
 }
 
+*/
+function attackFunction() {
+ document.getElementById("dicebutton").style.visibility = "visible";
+ document.getElementById("stopAtkButton").style.visibility = "visible";
+}
+function stopAttack() {
+  document.getElementById("dicebutton").style.visibility = "hidden";
+  document.getElementById("stopAtkButton").style.visibility = "hidden";
+}
 
 function showPopup() {
      document.getElementById("popup").style.display = "block";
 }
 	
 	
-	
+function forceUpdate() {
+  location.reload();
+}
 	
 	
  function openForm() {
@@ -458,8 +511,16 @@ img.onclick = function(){
     modalImg.src = this.src;
     captionText.innerHTML = this.alt;
 }
-       
-var span = document.getElementsByClassName("close")[0];
+ 
+
+
+
+
+
+
+
+
+  var span = document.getElementsByClassName("close")[0];
        
         var dice = {
   sides: 6,
@@ -480,11 +541,12 @@ function printNumber(number) {
   placeholder.innerHTML = number;
 }
 function contact() {
-	
+  
 }
-var button = document.getElementById('button');
 
-button.onclick = function() {
+var dicebutton = document.getElementById('dicebutton');
+
+dicebutton.onclick = function() {
   var result = dice.roll();
   printNumber(result);
 };
